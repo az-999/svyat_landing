@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 /** @var yii\web\View $this */
 
+use yii\helpers\Url;
+
 $resumeBody = file_get_contents(Yii::getAlias('@app/data/resume-body.html'));
+$this->registerCssFile('@web/css/chat.css');
 ?>
 <div class="cv-wrap">
     <p class="cv-updated">Резюме обновлено 18 мая 2026</p>
@@ -20,6 +23,9 @@ $resumeBody = file_get_contents(Yii::getAlias('@app/data/resume-body.html'));
                 <a href="mailto:dram1008@yandex.ru">dram1008@yandex.ru</a>
             </div>
             <p class="cv-hero__salary"><span>300 000</span> ₽ на руки</p>
+            <p class="cv-hero__cta">
+                <a class="chat-btn chat-btn--primary" href="<?= Url::to(['/chat']) ?>">Спросить AI-ассистента</a>
+            </p>
         </div>
     </header>
 

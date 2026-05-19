@@ -23,7 +23,7 @@ $this->beginPage();
     <link rel="stylesheet" href="<?= Yii::getAlias('@web/css/chat.css') ?>">
     <?php $this->head() ?>
 </head>
-<body class="cv-page">
+<body class="cv-page chat-page">
 <?php $this->beginBody() ?>
 <?= $content ?>
 <?php $this->endBody() ?>

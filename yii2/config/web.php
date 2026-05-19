@@ -29,6 +29,23 @@ $config = [
             'class' => \app\components\OpenAi::class,
             'apiKey' => $params['openaiApiKey'],
         ],
+        'assistantChat' => [
+            'class' => \app\services\AssistantChatService::class,
+            'apiKey' => $params['openaiApiKey'],
+            'assistantId' => $params['openaiAssistantId'],
+        ],
+        'turnstile' => [
+            'class' => \app\components\TurnstileValidator::class,
+            'secretKey' => $params['turnstileSecretKey'],
+        ],
+        'chatRateLimiter' => [
+            'class' => \app\components\ChatRateLimiter::class,
+            'perMinute' => $params['chatRateLimitPerMinute'],
+            'perHour' => $params['chatRateLimitPerHour'],
+        ],
+        'session' => [
+            'timeout' => 3600,
+        ],
         'cache' => [
             'class' => \yii\caching\FileCache::class,
         ],

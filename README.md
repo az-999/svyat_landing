@@ -54,3 +54,10 @@ Yii::$app->openai->getClient()->chat()->create([...]);
 ```
 
 Ключ API читается из `OPENAI_API_KEY` в `.env` (библиотека `vlucas/phpdotenv`).
+
+## Чат с AI-ассистентом
+
+- Вход: [http://localhost:6001/index.php?r=chat](http://localhost:6001/index.php?r=chat)
+- Защита: Turnstile (или капча Yii2), honeypot, rate limit, серверная сессия с `thread_id`
+- В `.env` укажите `OPENAI_ASSISTANT_ID=asst_7eRl9fdPMS6maIF0kkI1Tsgp`
+- Опционально: `TURNSTILE_SITE_KEY` и `TURNSTILE_SECRET_KEY` с [Cloudflare Turnstile](https://developers.cloudflare.com/turnstile/)
