@@ -1,0 +1,266 @@
+:root {
+    --cv-bg: #0c0f14;
+    --cv-surface: #141a24;
+    --cv-surface-2: #1b2433;
+    --cv-text: #e8edf5;
+    --cv-muted: #8b9bb5;
+    --cv-accent: #e8b86d;
+    --cv-accent-2: #5ec4cf;
+    --cv-border: rgba(255, 255, 255, 0.08);
+    --cv-radius: 16px;
+    --cv-font-display: "Fraunces", Georgia, serif;
+    --cv-font-body: "Source Sans 3", system-ui, sans-serif;
+    --cv-font-mono: "JetBrains Mono", monospace;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body.cv-page {
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--cv-font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--cv-text);
+    background: var(--cv-bg);
+    background-image:
+        radial-gradient(ellipse 80% 50% at 10% -10%, rgba(94, 196, 207, 0.15), transparent),
+        radial-gradient(ellipse 60% 40% at 90% 0%, rgba(232, 184, 109, 0.12), transparent);
+}
+
+.cv-wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+}
+
+.cv-hero {
+    position: relative;
+    padding: 2.5rem 2rem;
+    margin-bottom: 2.5rem;
+    border-radius: var(--cv-radius);
+    background: linear-gradient(135deg, var(--cv-surface) 0%, var(--cv-surface-2) 100%);
+    border: 1px solid var(--cv-border);
+    overflow: hidden;
+}
+
+.cv-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.cv-hero__inner {
+    position: relative;
+    z-index: 1;
+}
+
+.cv-hero__badge {
+    display: inline-block;
+    font-family: var(--cv-font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cv-accent-2);
+    margin-bottom: 0.75rem;
+}
+
+.cv-hero__name {
+    font-family: var(--cv-font-display);
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0 0 0.5rem;
+    color: var(--cv-text);
+}
+
+.cv-hero__role {
+    font-size: 1.125rem;
+    color: var(--cv-accent);
+    font-weight: 500;
+    margin: 0 0 1.25rem;
+}
+
+.cv-hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    color: var(--cv-muted);
+}
+
+.cv-hero__meta a {
+    color: var(--cv-accent-2);
+    text-decoration: none;
+}
+
+.cv-hero__meta a:hover {
+    text-decoration: underline;
+}
+
+.cv-hero__salary {
+    margin-top: 1.25rem;
+    font-family: var(--cv-font-display);
+    font-size: 1.5rem;
+    color: var(--cv-text);
+}
+
+.cv-hero__salary span {
+    color: var(--cv-accent);
+}
+
+.cv-updated {
+    font-size: 0.75rem;
+    color: var(--cv-muted);
+    margin-bottom: 0.5rem;
+    font-family: var(--cv-font-mono);
+}
+
+/* Resume content from HH export */
+.cv-content .resume {
+    --block-color: var(--cv-muted);
+}
+
+.cv-content .resume__title {
+    display: none;
+}
+
+.cv-content .resume__block {
+    font-family: var(--cv-font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cv-accent-2);
+    border: none;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--cv-accent);
+}
+
+.cv-content .resume__position {
+    font-family: var(--cv-font-display);
+    font-size: 1.35rem;
+    color: var(--cv-accent);
+    font-weight: 600;
+}
+
+.cv-content .resume__salary {
+    font-family: var(--cv-font-display);
+    font-size: 1.75rem;
+    color: var(--cv-text);
+}
+
+.cv-content .resume-experience {
+    list-style: none;
+    margin: 0 0 1.25rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--cv-surface);
+    border: 1px solid var(--cv-border);
+    border-radius: var(--cv-radius);
+    border-left: 3px solid var(--cv-accent);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cv-content .resume-experience:hover {
+    transform: translateX(4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.cv-content .resume-experience__company {
+    font-family: var(--cv-font-display);
+    font-size: 1.15rem;
+    color: var(--cv-text);
+}
+
+.cv-content .resume-experience__position {
+    font-weight: 600;
+    color: var(--cv-accent-2);
+    margin: 0.35rem 0;
+}
+
+.cv-content .bloko-form-hint {
+    font-family: var(--cv-font-mono);
+    font-size: 0.8rem;
+    color: var(--cv-muted);
+}
+
+.cv-content .info,
+.cv-content .info-footer,
+.cv-content .hint {
+    color: var(--cv-muted);
+}
+
+.cv-content .info-footer {
+    display: none;
+}
+
+.cv-content .resume-profession-role,
+.cv-content .resume-specialization,
+.cv-content .resume-subindustry {
+    color: var(--cv-muted);
+}
+
+.cv-content .resume-skils__item span {
+    display: inline-block;
+    margin: 0.25rem 0.35rem 0.25rem 0;
+    padding: 0.35rem 0.75rem;
+    background: var(--cv-surface-2);
+    border: 1px solid var(--cv-border);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--cv-text);
+}
+
+.cv-content .resume-education {
+    padding: 1rem 1.25rem;
+    background: var(--cv-surface);
+    border-radius: var(--cv-radius);
+    border: 1px solid var(--cv-border);
+    margin-bottom: 0.75rem;
+    list-style: none;
+}
+
+.cv-content .resume-education__name {
+    font-family: var(--cv-font-display);
+    color: var(--cv-text);
+}
+
+.cv-content p {
+    color: var(--cv-muted);
+}
+
+.cv-content .resume__body > p:first-of-type,
+.cv-content .resume__body > p:nth-of-type(2) {
+    display: none;
+}
+
+.cv-content .resume__body > p,
+.cv-content .resume__body > br {
+    margin: 0.35rem 0;
+}
+
+.cv-content a {
+    color: var(--cv-accent-2);
+}
+
+@media (max-width: 640px) {
+    .cv-wrap {
+        padding: 1.25rem 1rem 3rem;
+    }
+
+    .cv-hero {
+        padding: 1.5rem 1.25rem;
+    }
+}

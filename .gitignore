@@ -1,0 +1,4 @@
+yii2/.env
+yii2/vendor/
+yii2/runtime/
+yii2/web/assets/
