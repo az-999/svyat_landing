@@ -55,6 +55,11 @@ Yii::$app->openai->getClient()->chat()->create([...]);
 
 Ключ API читается из `OPENAI_API_KEY` в `.env` (библиотека `vlucas/phpdotenv`).
 
+## Лендинг «Кольцо познания»
+
+- Страница: [http://localhost:6001/landing](http://localhost:6001/landing)
+- Макет: [Figma — Остров Канта](https://www.figma.com/design/HGGmsUQIsJbLh55vGzvD5e/)
+
 ## Чат с AI-ассистентом
 
 - Вход: [http://localhost:6001/index.php?r=chat](http://localhost:6001/index.php?r=chat)

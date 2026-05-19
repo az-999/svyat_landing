@@ -67,14 +67,13 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'landing' => 'landing/index',
             ],
         ],
-        */
     ],
     'params' => $params,
 ];

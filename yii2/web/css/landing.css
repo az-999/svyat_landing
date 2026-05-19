@@ -1,0 +1,1098 @@
+/* Остров Канта — лендинг «Кольцо познания» (макет 1440px) */
+
+:root {
+    --landing-serif: "Cormorant Garamond", "Times New Roman", serif;
+    --landing-sans: "Montserrat", system-ui, sans-serif;
+    --landing-dark: #141414;
+    --landing-dark-2: #181818;
+    --landing-text-dark: #202020;
+    --landing-brown: #413020;
+    --landing-cream: #feeed9;
+    --landing-accent: #bf5900;
+    --landing-white: #ffffff;
+    --landing-muted: #939393;
+    --landing-input: #5d5d5d;
+    --landing-max: 1440px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body.kant-landing {
+    margin: 0;
+    font-family: var(--landing-sans);
+    font-weight: 400;
+    color: var(--landing-brown);
+    background: var(--landing-cream);
+    -webkit-font-smoothing: antialiased;
+}
+
+.landing {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.landing-display {
+    font-family: var(--landing-serif);
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1.25;
+    margin: 0;
+}
+
+.landing-display--sm {
+    font-size: clamp(1.5rem, 2.1vw, 1.92rem);
+}
+
+.landing-display--xs {
+    font-size: clamp(1.1rem, 1.5vw, 1.375rem);
+    line-height: 1.61;
+}
+
+.landing-lead {
+    margin: 0;
+    font-size: clamp(1.25rem, 2.2vw, 1.95rem);
+    line-height: 1.25;
+    color: inherit;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* —— Hero —— */
+.landing-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: clamp(520px, 56vw, 800px);
+    background: var(--landing-dark);
+    color: var(--landing-white);
+    overflow: hidden;
+}
+
+.landing-hero__bg {
+    position: absolute;
+    inset: 0;
+    display: block;
+}
+
+.landing-hero__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.landing-hero__bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(20, 20, 20, 0.55) 0%,
+        rgba(20, 20, 20, 0.15) 42%,
+        rgba(20, 20, 20, 0) 68%
+    ),
+    linear-gradient(
+        180deg,
+        rgba(20, 20, 20, 0.1) 0%,
+        rgba(20, 20, 20, 0.05) 55%,
+        rgba(20, 20, 20, 0.72) 100%
+    );
+    pointer-events: none;
+}
+
+.landing-brand {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin: 0;
+    padding: clamp(1rem, 2.2vw, 2rem);
+    font-size: clamp(0.75rem, 1vw, 0.9rem);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.25;
+}
+
+.landing-hero__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.5rem, 1vw, 1.75rem);
+    max-width: 36rem;
+    margin-top: auto;
+    padding: clamp(1rem, 2.2vw, 2rem);
+    padding-bottom: clamp(2.5rem, 8vw, 5rem);
+}
+
+.landing-hero .landing-display {
+    font-size: clamp(2rem, 3.7vw, 3.32rem);
+}
+
+.landing-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.landing-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 1.25rem;
+    border: none;
+    font-family: var(--landing-sans);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 0.98;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.landing-btn:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+}
+
+.landing-btn--primary {
+    background: var(--landing-accent);
+    color: var(--landing-white);
+}
+
+.landing-btn--secondary {
+    background: var(--landing-white);
+    color: var(--landing-dark-2);
+}
+
+.landing-btn--compact {
+    font-size: 1.09rem;
+    min-height: 52px;
+    padding: 0 1.35rem;
+    white-space: nowrap;
+}
+
+/* —— Philosophy —— */
+.landing-philosophy {
+    position: relative;
+    min-height: clamp(520px, 56vw, 800px);
+    padding: clamp(4rem, 12vw, 9rem) clamp(1.5rem, 5vw, 3rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(2rem, 6vw, 4rem);
+    background: radial-gradient(
+        ellipse 120% 80% at 54% 90%,
+        #2c2c2c 0%,
+        #202020 50%,
+        #141414 100%
+    );
+    color: var(--landing-white);
+    overflow: hidden;
+}
+
+.landing-philosophy__deco {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: min(38vw, 552px);
+    height: auto;
+    opacity: 0.22;
+    pointer-events: none;
+}
+
+.landing-philosophy__deco--left {
+    left: max(-8rem, -10vw);
+    transform: translateY(-50%) scaleX(-1);
+}
+
+.landing-philosophy__deco--right {
+    right: max(-6rem, -8vw);
+}
+
+.landing-philosophy__quotes {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(2rem, 6vw, 4rem);
+    max-width: 47rem;
+}
+
+.landing-philosophy__quote {
+    margin: 0;
+    font-family: var(--landing-serif);
+    font-size: clamp(1.35rem, 2.7vw, 2.46rem);
+    line-height: 1.25;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* —— Sapere Aude —— */
+.landing-sapere {
+    position: relative;
+    min-height: clamp(520px, 56vw, 800px);
+    overflow: hidden;
+}
+
+.landing-sapere__bg {
+    position: absolute;
+    inset: 0;
+    background: url("../img/landing/paper-texture.jpg") center / cover no-repeat;
+}
+
+.landing-sapere__inner {
+    position: relative;
+    max-width: var(--landing-max);
+    margin: 0 auto;
+    padding: clamp(3rem, 10vw, 9.5rem) clamp(1rem, 3vw, 2.5rem);
+    min-height: inherit;
+}
+
+.landing-sapere__scene {
+    position: relative;
+    width: min(100%, 780px);
+    margin: 0 auto;
+}
+
+.landing-sapere__backdrop {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.landing-sapere__cathedral-wrap {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 58%;
+    z-index: 1;
+    line-height: 0;
+}
+
+.landing-sapere__cathedral-wrap picture,
+.landing-sapere__cathedral {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.landing-sapere__cathedral {
+    object-fit: contain;
+    object-position: bottom right;
+    pointer-events: none;
+}
+
+.landing-sapere__frame {
+    position: absolute;
+    left: 6.8%;
+    top: 19.8%;
+    z-index: 2;
+    width: 85.3%;
+    max-width: none;
+    margin: 0;
+    padding: 0 0.75rem;
+    text-align: center;
+    color: var(--landing-brown);
+}
+
+.landing-sapere__frame p {
+    margin: 0 0 0.85rem;
+    font-size: clamp(0.9rem, 1.1vw, 1rem);
+    line-height: 1.47;
+}
+
+.landing-sapere__frame strong {
+    font-weight: 600;
+}
+
+/* —— Features —— */
+.landing-features {
+    position: relative;
+    min-height: clamp(520px, 56vw, 800px);
+    padding: clamp(3rem, 8vw, 7.5rem) clamp(1rem, 4vw, 3.5rem) clamp(4rem, 10vw, 6rem);
+    overflow: hidden;
+}
+
+.landing-features__bg {
+    position: absolute;
+    inset: 0;
+    background: url("../img/landing/paper-texture.jpg") center / cover no-repeat;
+}
+
+.landing-features__bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--landing-cream);
+    opacity: 0.92;
+}
+
+.landing-features__title {
+    position: relative;
+    z-index: 1;
+    max-width: 45rem;
+    margin: 0 auto clamp(2rem, 5vw, 3rem);
+    font-size: clamp(1.75rem, 3.6vw, 3.2rem);
+    text-align: center;
+    color: var(--landing-text-dark);
+}
+
+.landing-features__grid {
+    position: relative;
+    z-index: 1;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: var(--landing-max);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+}
+
+.landing-features__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+    max-width: 20rem;
+    text-align: center;
+}
+
+.landing-features__item img {
+    width: min(100%, 292px);
+    height: auto;
+    object-fit: contain;
+    object-position: bottom center;
+}
+
+.landing-features__item p {
+    margin: 0;
+    font-size: 0.89rem;
+    line-height: 1.47;
+    color: var(--landing-brown);
+}
+
+@media (min-width: 900px) {
+    .landing-features__grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto auto;
+        align-items: start;
+    }
+
+    .landing-features__item--amber {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: start;
+        margin-top: 0;
+    }
+
+    .landing-features__item--limited {
+        grid-column: 4;
+        grid-row: 1;
+        justify-self: end;
+    }
+
+    .landing-features__item--kant {
+        grid-column: 2;
+        grid-row: 2;
+        margin-top: 3rem;
+    }
+
+    .landing-features__item--geometry {
+        grid-column: 3;
+        grid-row: 2;
+        margin-top: 3rem;
+    }
+}
+
+/* —— Offer / pricing —— */
+.landing-offer {
+    position: relative;
+    min-height: clamp(520px, 56vw, 800px);
+    padding: clamp(2rem, 4vw, 3.25rem) clamp(1rem, 3vw, 2rem) clamp(3rem, 6vw, 5rem);
+    color: var(--landing-white);
+    background: radial-gradient(
+        ellipse 90% 70% at 55% 55%,
+        #484848 0%,
+        #2e2e2e 50%,
+        #212121 75%,
+        #141414 100%
+    );
+    overflow: hidden;
+}
+
+.landing-offer__header {
+    position: relative;
+    z-index: 2;
+    max-width: 36rem;
+    margin: 0 auto;
+    padding-left: clamp(0, 8vw, 7rem);
+}
+
+.landing-offer__header .landing-display {
+    font-size: clamp(2rem, 3.7vw, 3.32rem);
+}
+
+/* Композиция кольцо + ценник: пропорции из Figma (1440×800, узлы 413:136 и 424:9) */
+.landing-offer__visual {
+    position: relative;
+    margin: clamp(1rem, 3vw, 2rem) auto 0;
+    overflow: visible;
+}
+
+.landing-offer__composition {
+    position: relative;
+    width: min(100%, 66rem);
+    max-width: 1055px;
+    margin: 0 auto;
+    aspect-ratio: 1055 / 520;
+}
+
+.landing-offer__ring {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 63.13%;
+    height: auto;
+    display: block;
+    transform: rotate(-0.55deg);
+    transform-origin: 50% 50%;
+}
+
+.landing-offer__tag-group {
+    position: absolute;
+    left: 48.44%;
+    top: 28.2%;
+    width: 51.56%;
+    transform: rotate(-7.52deg);
+    transform-origin: left top;
+    z-index: 2;
+}
+
+.landing-offer__price-tag {
+    position: relative;
+    width: 100%;
+}
+
+.landing-offer__price-tag > img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.landing-offer__price-text {
+    position: absolute;
+    right: 12%;
+    top: 22%;
+    width: 50%;
+    text-align: right;
+    text-transform: uppercase;
+    color: #161616;
+    pointer-events: none;
+}
+
+.landing-offer__price-text span {
+    display: block;
+    font-size: clamp(0.7rem, 1.48vw, 1.33rem);
+    line-height: 1.25;
+}
+
+.landing-offer__price-text strong {
+    display: block;
+    font-family: var(--landing-serif);
+    font-size: clamp(1.5rem, 4.26vw, 3.84rem);
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+.landing-offer__note {
+    position: absolute;
+    left: 31%;
+    top: 68%;
+    width: 71%;
+    margin: 0;
+    font-size: clamp(0.55rem, 0.79vw, 0.71rem);
+    line-height: 1.6;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--landing-white);
+}
+
+.landing-offer__full-price {
+    position: relative;
+    z-index: 2;
+    margin: clamp(2rem, 8vw, 5rem) 0 0;
+    font-size: clamp(1rem, 1.8vw, 1.65rem);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.landing-offer__full-price strong {
+    font-weight: 600;
+}
+
+/* —— Steps —— */
+.landing-steps {
+    position: relative;
+    min-height: clamp(520px, 56vw, 800px);
+    padding: clamp(4rem, 10vw, 7rem) clamp(1rem, 3vw, 2rem);
+    overflow: hidden;
+}
+
+.landing-steps__bg {
+    position: absolute;
+    inset: 0;
+    background: url("../img/landing/paper-texture.jpg") center / cover no-repeat;
+}
+
+.landing-steps__bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--landing-cream);
+    opacity: 0.92;
+}
+
+.landing-steps__title {
+    position: relative;
+    z-index: 1;
+    max-width: 40rem;
+    margin: 0 auto clamp(2.5rem, 6vw, 5rem);
+    font-size: clamp(1.75rem, 3.6vw, 3.2rem);
+    text-align: center;
+    color: var(--landing-text-dark);
+}
+
+.landing-steps__list {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1rem, 3vw, 2.5rem);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: var(--landing-max);
+    margin-inline: auto;
+}
+
+.landing-steps__list > li:not(.landing-steps__arrow) {
+    flex: 0 1 292px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+    text-align: center;
+}
+
+.landing-steps__list img {
+    width: min(100%, 284px);
+    height: auto;
+}
+
+.landing-steps__arrow {
+    flex: 0 0 auto;
+    display: none;
+}
+
+.landing-steps__arrow img {
+    width: 48px;
+    height: auto;
+    transform: rotate(90deg);
+}
+
+@media (min-width: 960px) {
+    .landing-steps__arrow {
+        display: block;
+    }
+
+    .landing-steps__arrow img {
+        width: 73px;
+        transform: none;
+    }
+}
+
+/* —— Contact —— */
+.landing-contact {
+    position: relative;
+    padding: clamp(2rem, 4vw, 2.125rem) clamp(1rem, 8vw, 20rem);
+    color: var(--landing-white);
+    overflow: hidden;
+}
+
+.landing-contact__bg {
+    position: absolute;
+    inset: 0;
+    background:
+        url("../img/landing/paper-texture.jpg") center top / cover no-repeat,
+        radial-gradient(
+            ellipse 120% 80% at 54% 90%,
+            #2c2c2c 0%,
+            #202020 50%,
+            #141414 100%
+        );
+}
+
+.landing-contact__bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #1a1a1a 0%, #1a1a1a 100%);
+    opacity: 0.88;
+}
+
+.landing-contact__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: clamp(1.5rem, 3vw, 2.75rem);
+    text-align: center;
+}
+
+.landing-contact .landing-display {
+    font-size: clamp(1.75rem, 3.6vw, 3.25rem);
+}
+
+.landing-contact__lead {
+    margin: 0.5rem 0 2rem;
+    font-size: clamp(0.95rem, 1.2vw, 1.09rem);
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+}
+
+.landing-contact__fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    align-items: stretch;
+}
+
+.landing-field {
+    flex: 1 1 10rem;
+    min-width: 0;
+}
+
+.landing-field input {
+    width: 100%;
+    height: 52px;
+    padding: 0 0.8rem;
+    border: none;
+    background: var(--landing-input);
+    color: var(--landing-white);
+    font-family: var(--landing-sans);
+    font-size: 1.09rem;
+    letter-spacing: -0.01em;
+}
+
+.landing-field input::placeholder {
+    color: var(--landing-muted);
+}
+
+.landing-field input:focus {
+    outline: 2px solid var(--landing-accent);
+    outline-offset: 2px;
+}
+
+.landing-contact__form .landing-btn {
+    flex: 0 0 auto;
+    align-self: stretch;
+}
+
+.landing-contact__legal {
+    margin: 1.5rem 0 0;
+    font-size: 1.09rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: -0.01em;
+}
+
+.landing-contact__legal a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* —— Мобильная вёрстка (Figma 375px, node 445:19) —— */
+@media (max-width: 767px) {
+    .landing-brand {
+        display: none;
+    }
+
+    /* Hero */
+    .landing-hero {
+        min-height: max(100svh, 812px);
+    }
+
+    .landing-hero__bg img {
+        object-position: center bottom;
+    }
+
+    .landing-hero__bg::after {
+        background: linear-gradient(
+            180deg,
+            rgba(26, 26, 26, 0) 35.39%,
+            #1a1a1a 74.82%
+        );
+    }
+
+    .landing-hero__content {
+        width: calc(100% - 32px);
+        max-width: 343px;
+        margin-inline: auto;
+        padding: 0 0 24px;
+        text-align: center;
+        align-items: stretch;
+    }
+
+    .landing-hero .landing-display {
+        font-size: 24px;
+    }
+
+    .landing-hero .landing-lead {
+        font-size: 16px;
+    }
+
+    .landing-hero__actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .landing-hero__actions .landing-btn {
+        width: 100%;
+    }
+
+    /* Philosophy */
+    .landing-philosophy {
+        min-height: max(100svh, 812px);
+        padding: 0 16px;
+        justify-content: center;
+    }
+
+    .landing-philosophy__quotes {
+        gap: 24px;
+        max-width: 343px;
+    }
+
+    .landing-philosophy__quote {
+        font-size: 22px;
+    }
+
+    .landing-philosophy__deco--left {
+        left: -130px;
+        top: -78px;
+        right: auto;
+        width: 621px;
+        max-width: none;
+        transform: rotate(-90deg);
+        opacity: 0.22;
+    }
+
+    .landing-philosophy__deco--right {
+        left: -127px;
+        right: auto;
+        top: auto;
+        bottom: -140px;
+        width: 618px;
+        max-width: none;
+        transform: rotate(-90deg) scaleY(-1);
+        opacity: 0.22;
+    }
+
+    /* Sapere Aude */
+    .landing-sapere {
+        min-height: max(100svh, 812px);
+        background: #feeed8;
+    }
+
+    .landing-sapere__bg {
+        background: #feeed8;
+    }
+
+    .landing-sapere__inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 70px 16px 0;
+        min-height: max(100svh, 812px);
+    }
+
+    .landing-sapere__scene {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 343px;
+    }
+
+    .landing-sapere__backdrop {
+        display: none !important;
+    }
+
+    .landing-sapere__scene {
+        max-width: none;
+        width: 100%;
+    }
+
+    .landing-sapere__frame {
+        position: static;
+        order: 1;
+        width: 100%;
+        max-width: 343px;
+        margin: 0 auto;
+        padding: 0;
+        flex-shrink: 0;
+    }
+
+    .landing-sapere__cathedral-wrap {
+        order: 2;
+        position: static;
+        width: 100%;
+        max-width: 343px;
+        margin: 1.5rem auto 0;
+        overflow: visible;
+        line-height: 0;
+    }
+
+    .landing-sapere__cathedral-wrap picture,
+    .landing-sapere__cathedral {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .landing-sapere__cathedral {
+        margin: 0;
+        object-fit: contain;
+        object-position: center bottom;
+    }
+
+    .landing-sapere__frame .landing-display--sm {
+        font-size: 22px;
+        line-height: 1.75;
+    }
+
+    .landing-sapere__frame p {
+        font-size: 14px;
+    }
+
+    /* Features */
+    .landing-features {
+        min-height: 0;
+        padding: 52px 16px;
+    }
+
+    .landing-features__title {
+        font-size: 22px;
+        line-height: 1.75;
+        margin-bottom: 24px;
+    }
+
+    .landing-features__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        max-width: 343px;
+    }
+
+    .landing-features__item {
+        max-width: none;
+        width: 100%;
+    }
+
+    .landing-features__item--amber,
+    .landing-features__item--kant,
+    .landing-features__item--geometry,
+    .landing-features__item--limited {
+        grid-column: auto;
+        grid-row: auto;
+        margin-top: 0;
+        justify-self: center;
+    }
+
+    .landing-features__item img {
+        width: 233px;
+        height: 218px;
+    }
+
+    .landing-features__item .landing-display--xs {
+        font-size: 18px;
+    }
+
+    .landing-features__item p {
+        font-size: 14px;
+        max-width: 327px;
+    }
+
+    /* Offer */
+    .landing-offer {
+        min-height: 820px;
+        padding: 0 0 24px;
+    }
+
+    .landing-offer__header {
+        padding: 52px 16px 0;
+        text-align: center;
+        max-width: none;
+    }
+
+    .landing-offer__header .landing-display {
+        font-size: 24px;
+    }
+
+    .landing-offer__header .landing-lead {
+        font-size: 16px;
+    }
+
+    .landing-offer__visual {
+        margin-top: 0;
+    }
+
+    .landing-offer__composition {
+        width: 100%;
+        max-width: 375px;
+        aspect-ratio: 375 / 430;
+    }
+
+    .landing-offer__ring {
+        left: 9.07%;
+        top: 17%;
+        width: 82.25%;
+        transform: rotate(-0.62deg);
+    }
+
+    .landing-offer__tag-group {
+        left: 0;
+        top: 56.5%;
+        width: 78.93%;
+        transform: none;
+    }
+
+    .landing-offer__note {
+        left: 4.27%;
+        top: 72%;
+        width: 91.47%;
+        font-size: 12px;
+        line-height: 1.6;
+        transform: none;
+    }
+
+    .landing-offer__price-text span {
+        font-size: 12px;
+    }
+
+    .landing-offer__price-text strong {
+        font-size: 34.65px;
+    }
+
+    .landing-offer__full-price {
+        margin-top: 0;
+        padding: 16px 16px 0;
+        font-size: 19.92px;
+    }
+
+    /* Steps */
+    .landing-steps {
+        min-height: 0;
+        padding: 52px 16px;
+    }
+
+    .landing-steps__title {
+        font-size: 22px;
+        line-height: 1.75;
+        margin-bottom: 24px;
+        max-width: 343px;
+    }
+
+    .landing-steps__list {
+        flex-direction: column;
+        gap: 26px;
+        max-width: 343px;
+    }
+
+    .landing-steps__arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 73px;
+        margin: 0 auto;
+    }
+
+    .landing-steps__arrow img {
+        width: 73px;
+        height: 24px;
+        transform: rotate(90deg);
+    }
+
+    .landing-steps__list > li:not(.landing-steps__arrow) img {
+        width: 242px;
+        height: 242px;
+        object-fit: contain;
+    }
+
+    .landing-steps .landing-display--xs {
+        font-size: 18px;
+    }
+
+    /* Contact */
+    .landing-contact {
+        padding: 44px 16px;
+    }
+
+    .landing-contact__inner {
+        padding: 0;
+        max-width: 343px;
+    }
+
+    .landing-contact .landing-display {
+        font-size: 24px;
+    }
+
+    .landing-contact__lead {
+        font-size: 16px;
+        margin-bottom: 1.5rem;
+    }
+
+    .landing-contact__fields {
+        flex-direction: column;
+    }
+
+    .landing-field {
+        flex: 1 1 auto;
+    }
+
+    .landing-contact__form .landing-btn {
+        width: 100%;
+    }
+
+    .landing-contact__legal {
+        font-size: 12px;
+    }
+}
