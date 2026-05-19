@@ -1,8 +1,10 @@
 services:
   web:
-    image: yiisoftware/yii2-php:8.2-apache
+    image: yiisoftware/yii2-php:8.4-apache
+    restart: unless-stopped
     ports:
-      - "6000:80"
+      # 6000 на Windows часто занят MobaXterm (X11). Используйте 6001 в браузере.
+      - "6001:80"
     volumes:
       - ./yii2:/app
     env_file:

@@ -12,13 +12,32 @@ cp yii2/.env.example yii2/.env
 
 2. Укажите в `yii2/.env` ключ `OPENAI_API_KEY` и при необходимости `COOKIE_VALIDATION_KEY`.
 
-3. Запустите Docker:
+3. Установите зависимости PHP (если папки `yii2/vendor` ещё нет):
+
+```bash
+docker run --rm -v "$(pwd)/yii2:/app" -w /app composer:latest install --no-interaction
+```
+
+4. Запустите Docker:
 
 ```bash
 docker compose up -d
 ```
 
-Приложение будет доступно на [http://localhost:6000](http://localhost:6000).
+Приложение будет доступно на [http://localhost:6001](http://localhost:6001).
+
+> **Почему не 6000?** На Windows порт 6000 часто занят **MobaXterm** (X11-сервер `XWin_MobaX`).  
+> Docker при этом работает, но браузер подключается не к Apache. Проверка в PowerShell:  
+> `Get-NetTCPConnection -LocalPort 6000 | Select OwningProcess`  
+> Если нужен именно 6000 — отключите X11 в MobaXterm или смените его display port.
+
+### Если страница не открывается
+
+- Откройте **http://127.0.0.1:6001** (не 6000).
+- В Docker Desktop у сервиса `web` должен быть статус **Running**.
+- Перезапустите: `docker compose down && docker compose up -d`
+- Проверьте логи: `docker compose logs web`
+- После `git clone` обязательно выполните `composer install` в `yii2/` (см. шаг 3).
 
 ## Структура
 
