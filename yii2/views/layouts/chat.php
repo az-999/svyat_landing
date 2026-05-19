@@ -25,6 +25,7 @@ $this->beginPage();
 </head>
 <body class="cv-page chat-page">
 <?php $this->beginBody() ?>
+<div class="cv-bg-grid" aria-hidden="true"></div>
 <?= $content ?>
 <?php $this->endBody() ?>
 </body>

@@ -31,12 +31,97 @@ body.cv-page {
     line-height: 1.6;
     color: var(--cv-text);
     background: var(--cv-bg);
+    position: relative;
+    overflow-x: hidden;
+    isolation: isolate;
+}
+
+/* Анимированный фон */
+body.cv-page::before,
+body.cv-page::after {
+    content: "";
+    position: fixed;
+    inset: -40%;
+    z-index: -2;
+    pointer-events: none;
+    will-change: transform;
+}
+
+body.cv-page::before {
+    background:
+        radial-gradient(ellipse 55% 45% at 20% 25%, rgba(94, 196, 207, 0.22), transparent 55%),
+        radial-gradient(ellipse 50% 40% at 75% 15%, rgba(232, 184, 109, 0.18), transparent 50%),
+        radial-gradient(ellipse 45% 50% at 50% 85%, rgba(120, 140, 220, 0.1), transparent 55%);
+    animation: cv-bg-drift-a 22s ease-in-out infinite alternate;
+}
+
+body.cv-page::after {
+    background:
+        radial-gradient(ellipse 40% 35% at 85% 70%, rgba(94, 196, 207, 0.14), transparent 50%),
+        radial-gradient(ellipse 35% 40% at 10% 60%, rgba(232, 184, 109, 0.12), transparent 45%);
+    animation: cv-bg-drift-b 28s ease-in-out infinite alternate;
+    opacity: 0.85;
+}
+
+@keyframes cv-bg-drift-a {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    50% {
+        transform: translate(4%, 3%) rotate(3deg) scale(1.06);
+    }
+    100% {
+        transform: translate(-3%, 5%) rotate(-2deg) scale(1.03);
+    }
+}
+
+@keyframes cv-bg-drift-b {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1.05);
+    }
+    50% {
+        transform: translate(-5%, -4%) rotate(-4deg) scale(1);
+    }
+    100% {
+        transform: translate(3%, -2%) rotate(2deg) scale(1.08);
+    }
+}
+
+/* Тонкая сетка поверх градиентов */
+body.cv-page .cv-bg-grid {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.35;
     background-image:
-        radial-gradient(ellipse 80% 50% at 10% -10%, rgba(94, 196, 207, 0.15), transparent),
-        radial-gradient(ellipse 60% 40% at 90% 0%, rgba(232, 184, 109, 0.12), transparent);
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 75%);
+    animation: cv-grid-pulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes cv-grid-pulse {
+    0% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 0.4;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.cv-page::before,
+    body.cv-page::after,
+    body.cv-page .cv-bg-grid {
+        animation: none;
+    }
 }
 
 .cv-wrap {
+    position: relative;
+    z-index: 1;
     max-width: 920px;
     margin: 0 auto;
     padding: 2.5rem 1.5rem 4rem;
