@@ -72,6 +72,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 'landing' => 'landing/index',
+                'test' => 'test/index',
             ],
         ],
     ],
