@@ -5,6 +5,7 @@ declare(strict_types=1);
 /** @var yii\web\View $this */
 
 $img = static fn (string $name): string => Yii::getAlias("@web/img/avatar/{$name}");
+$file = static fn (string $name): string => Yii::getAlias("@web/files/{$name}");
 
 $benefits = [
     [
@@ -54,21 +55,21 @@ $steps = [
     ['num' => '02', 'title' => 'Подписать документы', 'text' => 'Заполните и подпишите все необходимые формы.', 'icon' => 'pen', 'link' => null],
     [
         'num' => '03',
-        'title' => 'Отправить документы нам по адресу:',
-        'text' => '@NewMillenniumStar',
+        'title' => 'Отправить документы на почту:',
+        'text' => 'Avatarsmega@gmail.com',
         'icon' => 'send',
-        'link' => 'https://t.me/NewMillenniumStar',
+        'link' => 'mailto:Avatarsmega@gmail.com',
     ],
     ['num' => '04', 'title' => 'Оплатить вступительный взнос', 'text' => 'Внесите вступительный взнос согласно договору.', 'icon' => 'card', 'link' => null],
     ['num' => '05', 'title' => 'Получить доступ к программам сообщества AVATARS', 'text' => 'Добро пожаловать в экосистему AVATARS.', 'icon' => 'star', 'link' => null],
 ];
 
 $documents = [
-    ['num' => '01', 'title' => 'Устав ПОВО', 'accent' => 'purple', 'icon' => 'scales'],
-    ['num' => '02', 'title' => 'Анкета Заявителя Физ. лицо', 'accent' => 'blue', 'icon' => 'user'],
-    ['num' => '03', 'title' => 'Анкета Заявителя Юр. лицо', 'accent' => 'cyan', 'icon' => 'briefcase'],
-    ['num' => '04', 'title' => 'Договор', 'accent' => 'green', 'icon' => 'handshake'],
-    ['num' => '05', 'title' => 'Договор паевого взноса', 'accent' => 'orange', 'icon' => 'percent-doc'],
+    ['num' => '01', 'title' => 'Устав ПОВО', 'file' => 'ustav_povo.docx', 'accent' => 'purple', 'icon' => 'scales'],
+    ['num' => '02', 'title' => 'Анкета Заявителя Физ. лицо', 'file' => 'anketa_zayav_fiz.doc', 'accent' => 'blue', 'icon' => 'user'],
+    ['num' => '03', 'title' => 'Анкета Заявителя Юр. лицо', 'file' => 'anketa_zayav_yur.doc', 'accent' => 'cyan', 'icon' => 'briefcase'],
+    ['num' => '04', 'title' => 'Договор', 'file' => 'dogovor_oferta.doc', 'accent' => 'green', 'icon' => 'handshake'],
+    ['num' => '05', 'title' => 'Договор паевого взноса', 'file' => 'dogovor_paevogo_vznosa.doc', 'accent' => 'orange', 'icon' => 'percent-doc'],
 ];
 ?>
 <header class="avatar-header">
@@ -167,7 +168,7 @@ $documents = [
                         <?php include __DIR__ . '/_icons/' . $doc['icon'] . '.php'; ?>
                     </div>
                     <h3 class="avatar-card__title"><?= htmlspecialchars($doc['title'], ENT_QUOTES, 'UTF-8') ?></h3>
-                    <a class="avatar-btn avatar-btn--outline avatar-btn--xs" href="#" download>
+                    <a class="avatar-btn avatar-btn--outline avatar-btn--xs" href="<?= $file($doc['file']) ?>" download="<?= htmlspecialchars($doc['file'], ENT_QUOTES, 'UTF-8') ?>">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l4-4m-4 4l-4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         Скачать
                     </a>

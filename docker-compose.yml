@@ -12,3 +12,11 @@ services:
     environment:
       YII_ENV: ${YII_ENV:-dev}
       YII_DEBUG: ${YII_DEBUG:-1}
+
+  static:
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - "6002:80"
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
